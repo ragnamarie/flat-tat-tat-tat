@@ -1,7 +1,14 @@
 import Form from "../Components/Form";
+import useSWR from "swr";
 
 export default function ReportPage() {
-  function handleAddFlat(event) {
+  const {
+    data: emptyFlatsData,
+    isLoading: emptyFlatsLoading,
+    mutate: mutateEmptyFlats,
+  } = useSWR("/api/emptyFlats");
+
+  async function handleAddFlat(event) {
     console.log("Button clicked");
     event.preventDefault();
 
@@ -15,6 +22,18 @@ export default function ReportPage() {
       apartment: apartment,
       namesOnDoorbell: namesOnDoorbell,
     };
+
+    const response = await fetch(`/api/emptyFlats`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(emptyFlats),
+    });
+
+    if (response.ok) {
+      mutateEmptyFlats();
+    }
 
     console.log(emptyFlats);
   }
