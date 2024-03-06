@@ -17,11 +17,13 @@ export default function ReportPage() {
     const address = formData.get("address");
     const apartment = formData.get("apartment");
     const namesOnDoorbell = formData.get("name");
+    const report = formData.get("report");
 
     const emptyFlats = {
       address: address,
       apartment: apartment,
       namesOnDoorbell: namesOnDoorbell,
+      report: report,
     };
 
     const response = await fetch(`/api/emptyFlats`, {
