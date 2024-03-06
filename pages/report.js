@@ -1,5 +1,6 @@
 import Form from "../Components/Form";
 import useSWR from "swr";
+import Link from "next/link";
 
 export default function ReportPage() {
   const {
@@ -14,7 +15,7 @@ export default function ReportPage() {
 
     const formData = new FormData(event.target);
     const address = formData.get("address");
-    const apartment = formData.get("apartment"); // corrected from formData.get("address")
+    const apartment = formData.get("apartment");
     const namesOnDoorbell = formData.get("name");
 
     const emptyFlats = {
@@ -40,6 +41,8 @@ export default function ReportPage() {
 
   return (
     <>
+      <h1>REPORT AN EMPTY FLAT</h1>
+      <Link href={"/"}>← Back to Homepage</Link>
       <Form onAddFlat={handleAddFlat} />
     </>
   );

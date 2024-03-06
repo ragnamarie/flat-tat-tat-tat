@@ -1,5 +1,5 @@
 export default function Counter({ emptyFlats }) {
   const emptyFlatsCount = emptyFlats.length;
 
-  return <>Current number of empty flats: {emptyFlats}</>;
+  return <>THERE ARE CURRENTLY {emptyFlatsCount} EMPTY FLATS IN BERLIN</>;
 }
