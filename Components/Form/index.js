@@ -1,31 +1,88 @@
+import styled from "styled-components";
+
+export const StyledForm = styled.form`
+  font-family: Helvetica;
+  font-weight: 700;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  margin-top: 30px;
+`;
+
+export const StyledInput = styled.input`
+  position: relative;
+  font-family: Helvetica;
+  font-weight: 700;
+  border: none;
+  padding: 10px;
+  width: 200px;
+`;
+
+export const StyledInputContainer = styled.div`
+  display: grid;
+  gap: 20px;
+`;
+
+export const StyledTextArea = styled.textarea`
+  position: relative;
+  padding: 10px;
+  font-family: Helvetica;
+  font-weight: 700;
+  border: none;
+  height: 100%;
+  width: 400px;
+`;
+
+export const StyledButton = styled.button`
+  position: relative;
+  font-family: Helvetica;
+  font-weight: 700;
+  border: solid white;
+  padding: 10px;
+  width: 200px;
+  background-color: #2422d5;
+  color: white;
+`;
+
 export default function Form({ onAddFlat }) {
   return (
-    <form onSubmit={onAddFlat}>
-      <div>
-        <label htmlFor="address-input">Address:</label>
-        <input type="text" id="address-input" name="address" />
-      </div>
-      <br />
-      <div>
-        <label htmlFor="apartment-input">Apartment:</label>
-        <input type="text" id="apartment-input" name="apartment" />
-      </div>
-      <br />
-      <div>
-        <label htmlFor="name-input">Name on Doorbell:</label>
-        <input type="text" id="name-input" name="name" />
-      </div>
-      <br />
-      <div>
-        <label htmlFor="report-input">Additional Information:</label>
-        <textarea
-          id="report-input"
-          name="report"
-          placeholder="Why do you think this flat is empty?"
-        />
-      </div>
-      <br />
-      <button type="submit">SUBMIT</button>
-    </form>
+    <>
+      <StyledForm onSubmit={onAddFlat}>
+        <StyledInputContainer>
+          <StyledInput
+            type="text"
+            id="street-input"
+            name="street"
+            placeholder="STREET AND NR."
+          />
+          <StyledInput
+            type="text"
+            id="zip-input"
+            name="zip"
+            placeholder="ZIP CODE"
+          />
+          <StyledInput
+            type="text"
+            id="apartment-input"
+            name="apartment"
+            placeholder="APARTMENT"
+          />
+          <StyledInput
+            type="text"
+            id="name-input"
+            name="name"
+            placeholder="NAME(S) ON DOORBELL"
+          />
+          <StyledButton type="submit">SUBMIT</StyledButton>
+        </StyledInputContainer>
+        <div>
+          <StyledTextArea
+            id="report-input"
+            name="report"
+            placeholder="Why do you think this flat is empty? Is there anything else we need to know?"
+          />
+        </div>
+      </StyledForm>
+    </>
   );
 }
