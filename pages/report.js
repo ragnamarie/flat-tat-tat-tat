@@ -1,8 +1,11 @@
 import Form from "../Components/Form";
 import useSWR from "swr";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function ReportPage() {
+  const router = useRouter();
+
   const {
     data: emptyFlatsData,
     isLoading: emptyFlatsLoading,
@@ -38,6 +41,7 @@ export default function ReportPage() {
 
     if (response.ok) {
       mutateEmptyFlats();
+      router.push("/confirmation");
     }
 
     console.log(emptyFlats);
