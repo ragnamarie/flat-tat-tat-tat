@@ -25,6 +25,11 @@ body {
   main {
     min-height: 75%;
   }
+  
+  h2 {
+    font-family: Helvetica;
+    font-weight: 300;
+  }
 
   h3 {
     font-family: Helvetica;
