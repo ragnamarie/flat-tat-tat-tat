@@ -1,8 +1,8 @@
-import useLocalStorageState from "use-local-storage-state";
 import Counter from "../Components/Counter";
-import { useRouter } from "next/router";
 import Link from "next/link";
 import useSWR from "swr";
+import GlobalStyle from "../styles";
+import Layout from "../Components/Layout";
 
 export default function HomePage() {
   const fetcher = (url) => fetch(url).then((response) => response.json());
@@ -23,9 +23,14 @@ export default function HomePage() {
   console.log(emptyFlatsData);
 
   return (
-    <>
-      <Counter emptyFlats={emptyFlatsData} />
-      <Link href="/report">report an empty flat</Link>
-    </>
+    <Layout>
+      <GlobalStyle />
+      <h1>
+        <Counter emptyFlats={emptyFlatsData} />
+      </h1>
+      <h3>
+        <Link href="/report">Report an empty flat</Link>
+      </h3>
+    </Layout>
   );
 }

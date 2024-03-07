@@ -1,6 +1,8 @@
 import Form from "../Components/Form";
 import useSWR from "swr";
 import Link from "next/link";
+import GlobalStyle from "../styles";
+import Layout from "../Components/Layout";
 
 export default function ReportPage() {
   const {
@@ -14,13 +16,15 @@ export default function ReportPage() {
     event.preventDefault();
 
     const formData = new FormData(event.target);
-    const address = formData.get("address");
+    const street = formData.get("street");
+    const zip = formData.get("zip");
     const apartment = formData.get("apartment");
     const namesOnDoorbell = formData.get("name");
     const report = formData.get("report");
 
     const emptyFlats = {
-      address: address,
+      street: street,
+      zip: zip,
       apartment: apartment,
       namesOnDoorbell: namesOnDoorbell,
       report: report,
@@ -42,10 +46,13 @@ export default function ReportPage() {
   }
 
   return (
-    <>
+    <Layout>
+      <GlobalStyle />
       <h1>REPORT AN EMPTY FLAT</h1>
-      <Link href={"/"}>← Back to Homepage</Link>
+      <h3>
+        <Link href={"/"}>← Back to Homepage</Link>
+      </h3>
       <Form onAddFlat={handleAddFlat} />
-    </>
+    </Layout>
   );
 }
