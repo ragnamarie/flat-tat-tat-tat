@@ -1,8 +1,6 @@
 import Form from "../Components/Form";
 import useSWR from "swr";
 import Link from "next/link";
-import GlobalStyle from "../styles";
-import Layout from "../Components/Layout";
 
 export default function ReportPage() {
   const {
@@ -46,13 +44,12 @@ export default function ReportPage() {
   }
 
   return (
-    <Layout>
-      <GlobalStyle />
+    <>
       <h1>REPORT AN EMPTY FLAT</h1>
       <h3>
         <Link href={"/"}>← Back to Homepage</Link>
       </h3>
       <Form onAddFlat={handleAddFlat} />
-    </Layout>
+    </>
   );
 }
