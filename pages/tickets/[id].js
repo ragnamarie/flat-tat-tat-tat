@@ -21,8 +21,10 @@ export default function TicketDetailsPage() {
   return (
     <ReportedFlatsDetails
       street={data.street}
+      zip={data.zip}
       apartment={data.apartment}
       namesOnDoorbell={data.namesOnDoorbell}
+      isConfirmedEmpty={data.isConfirmedEmpty}
     />
   );
 }

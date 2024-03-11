@@ -14,13 +14,21 @@ export const StyledTicket = styled.span`
 
 export default function ReportedFlatsDetails({
   street,
+  zip,
   apartment,
   namesOnDoorbell,
+  isConfirmedEmpty,
 }) {
+  console.log(isConfirmedEmpty);
+
   return (
     <>
       <h1>{street}</h1>
       <StyledTicket>
+        <p>
+          <u>Address</u>
+          <br /> {street} <br /> {zip} Berlin
+        </p>
         <p>
           <u>Apartment</u>
           <br /> {apartment}
@@ -28,6 +36,10 @@ export default function ReportedFlatsDetails({
         <p>
           <u>Names</u>
           <br /> {namesOnDoorbell}
+        </p>
+        <p>
+          <u>Status</u>
+          <br /> {isConfirmedEmpty.toString()}
         </p>
       </StyledTicket>
     </>

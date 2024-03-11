@@ -31,6 +31,7 @@ export default function ReportedFlats({ emptyFlats }) {
           <StyledTicket>
             <Link href={`/tickets/${flat._id}`}>{flat.street}</Link>
           </StyledTicket>
+          <span>{flat.isConfirmedEmpty}</span>
         </li>
       ))}
     </StyledList>
