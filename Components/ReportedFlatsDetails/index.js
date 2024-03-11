@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Status from "../Status";
 
 export const StyledTicket = styled.span`
   display: inline-block;
@@ -12,6 +13,11 @@ export const StyledTicket = styled.span`
   min-width: 200px;
 `;
 
+export const StyledContainer = styled.div`
+  display: flex;
+  gap: 20px;
+`;
+
 export default function ReportedFlatsDetails({
   street,
   zip,
@@ -23,25 +29,23 @@ export default function ReportedFlatsDetails({
 
   return (
     <>
-      <h1>{street}</h1>
-      <StyledTicket>
-        <p>
-          <u>Address</u>
-          <br /> {street} <br /> {zip} Berlin
-        </p>
-        <p>
-          <u>Apartment</u>
-          <br /> {apartment}
-        </p>
-        <p>
-          <u>Names</u>
-          <br /> {namesOnDoorbell}
-        </p>
-        <p>
-          <u>Status</u>
-          <br /> {isConfirmedEmpty.toString()}
-        </p>
-      </StyledTicket>
+      <StyledContainer>
+        <StyledTicket>
+          <p>
+            <u>Address</u>
+            <br /> {street} <br /> {zip} Berlin
+          </p>
+          <p>
+            <u>Apartment</u>
+            <br /> {apartment}
+          </p>
+          <p>
+            <u>Names</u>
+            <br /> {namesOnDoorbell}
+          </p>
+        </StyledTicket>
+        <Status isConfirmedEmpty={isConfirmedEmpty} />
+      </StyledContainer>
     </>
   );
 }

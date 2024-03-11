@@ -19,6 +19,9 @@ export default function TicketPage() {
   return (
     <>
       <h1>REPORTED FLATS</h1>
+      <h3>
+        <Link href={"/"}>← Back to Homepage</Link>
+      </h3>
       <ReportedFlats emptyFlats={emptyFlatsData} />
     </>
   );

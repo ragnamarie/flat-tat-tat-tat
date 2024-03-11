@@ -3,14 +3,16 @@ import Link from "next/link";
 
 export const StyledList = styled.ul`
   display: grid;
-  gap: 40px;
+  gap: 20px;
   list-style: none;
   padding: 0;
   margin: 0;
 `;
 
 export const StyledTicket = styled.span`
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
   font-family: Helvetica;
   font-weight: 700;
@@ -18,7 +20,7 @@ export const StyledTicket = styled.span`
   padding: 10px;
   background-color: #2422d5;
   color: white;
-  min-width: 200px;
+  max-width: 250px;
 `;
 
 export default function ReportedFlats({ emptyFlats }) {
@@ -31,7 +33,6 @@ export default function ReportedFlats({ emptyFlats }) {
           <StyledTicket>
             <Link href={`/tickets/${flat._id}`}>{flat.street}</Link>
           </StyledTicket>
-          <span>{flat.isConfirmedEmpty}</span>
         </li>
       ))}
     </StyledList>

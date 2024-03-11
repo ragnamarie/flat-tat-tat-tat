@@ -1,6 +1,7 @@
 import useSWR from "swr";
 import { useRouter } from "next/router";
 import ReportedFlatsDetails from "../../Components/ReportedFlatsDetails";
+import Link from "next/link";
 
 export default function TicketDetailsPage() {
   const router = useRouter();
@@ -19,12 +20,18 @@ export default function TicketDetailsPage() {
   console.log(data._id);
 
   return (
-    <ReportedFlatsDetails
-      street={data.street}
-      zip={data.zip}
-      apartment={data.apartment}
-      namesOnDoorbell={data.namesOnDoorbell}
-      isConfirmedEmpty={data.isConfirmedEmpty}
-    />
+    <>
+      <h1>{data.street}</h1>
+      <h3>
+        <Link href={"/tickets"}>← Back to Overview</Link>
+      </h3>
+      <ReportedFlatsDetails
+        street={data.street}
+        zip={data.zip}
+        apartment={data.apartment}
+        namesOnDoorbell={data.namesOnDoorbell}
+        isConfirmedEmpty={data.isConfirmedEmpty}
+      />
+    </>
   );
 }
