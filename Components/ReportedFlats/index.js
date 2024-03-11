@@ -23,12 +23,13 @@ export const StyledTicket = styled.span`
 
 export default function ReportedFlats({ emptyFlats }) {
   console.log(emptyFlats);
+
   return (
     <StyledList>
       {emptyFlats.map((flat, index) => (
         <li key={index}>
           <StyledTicket>
-            <Link href="/">{flat.street}</Link>
+            <Link href={`/tickets/${flat._id}`}>{flat.street}</Link>
           </StyledTicket>
         </li>
       ))}
