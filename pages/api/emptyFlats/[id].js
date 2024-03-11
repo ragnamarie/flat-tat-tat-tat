@@ -6,7 +6,7 @@ export default async function handler(request, response) {
   const { id } = request.query;
 
   if (request.method === "GET") {
-    const emptyFlat = await EmptyFlat.findOne({ id: id });
+    const emptyFlat = await EmptyFlat.findOne({ _id: id });
 
     if (!emptyFlat) {
       return response.status(404).json({ status: "Not Found" });

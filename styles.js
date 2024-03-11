@@ -35,6 +35,10 @@ body {
     font-family: Helvetica;
   }
 
+  li {
+    list-style-type: none;
+  }
+
   a {
     color: white;
   }

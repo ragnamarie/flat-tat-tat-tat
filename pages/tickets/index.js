@@ -1,6 +1,6 @@
 import Link from "next/link";
 import useSWR from "swr";
-import ReportedFlats from "../Components/ReportedFlats";
+import ReportedFlats from "../../Components/ReportedFlats";
 
 export default function TicketPage() {
   const { data: emptyFlatsData, isLoading: loadingEmptyFlatsData } =
