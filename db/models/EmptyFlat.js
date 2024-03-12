@@ -8,6 +8,7 @@ const emptyFlatSchema = new Schema({
   apartment: { type: String, required: true },
   namesOnDoorbell: { type: String, required: true },
   report: { type: String, required: true },
+  isConfirmedEmpty: { type: Boolean, required: true },
 });
 
 const EmptyFlat =

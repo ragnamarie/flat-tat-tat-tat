@@ -29,6 +29,7 @@ export default function ReportPage() {
       apartment: apartment,
       namesOnDoorbell: namesOnDoorbell,
       report: report,
+      isConfirmedEmpty: false,
     };
 
     const response = await fetch(`/api/emptyFlats`, {
