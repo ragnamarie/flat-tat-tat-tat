@@ -2,7 +2,7 @@ import Form from "../Components/Form";
 import useSWR from "swr";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 
 export default function ReportPage() {
   const router = useRouter();

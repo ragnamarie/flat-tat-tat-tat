@@ -1,5 +1,7 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+import { MongoDBAdapter } from "@auth/mongodb-adapter";
+import clientPromise from "../../../db/mongodb";
 
 export default NextAuth({
   providers: [
@@ -18,6 +20,20 @@ export default NextAuth({
       },
     }),
   ],
+
+  adapter: MongoDBAdapter(clientPromise),
+
+  callbacks: {
+    async session({ session, user, token }) {
+      if (session?.user) {
+        session.user.id = user.id;
+        session.user.googleId = user.googleId;
+        session.user.email = user.email;
+        session.user.admin = user.admin;
+      }
+      return session;
+    },
+  },
 
   secret: process.env.JWT_SECRET,
 });
