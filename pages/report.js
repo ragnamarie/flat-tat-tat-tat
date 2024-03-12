@@ -2,9 +2,12 @@ import Form from "../Components/Form";
 import useSWR from "swr";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 export default function ReportPage() {
   const router = useRouter();
+
+  const { data: session, status } = useSession({ required: true });
 
   const {
     data: emptyFlatsData,
@@ -48,13 +51,15 @@ export default function ReportPage() {
     console.log(emptyFlats);
   }
 
-  return (
-    <>
-      <h1>REPORT AN EMPTY FLAT</h1>
-      <h3>
-        <Link href={"/"}>← Back to Homepage</Link>
-      </h3>
-      <Form onAddFlat={handleAddFlat} />
-    </>
-  );
+  if (status === "authenticated") {
+    return (
+      <>
+        <h1>REPORT AN EMPTY FLAT</h1>
+        <h3>
+          <Link href={"/"}>← Back to Homepage</Link>
+        </h3>
+        <Form onAddFlat={handleAddFlat} />
+      </>
+    );
+  }
 }

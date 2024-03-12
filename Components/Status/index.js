@@ -11,14 +11,14 @@ export const StyledBlueBox = styled.span`
   border: solid white;
   padding: 10px;
   background-color: #2422d5;
-  color: white;
+  color: ${(props) => (props.isConfirmed ? "#3BFF13" : "#FF7373")};
   max-height: 40px;
   width: 200px;
 `;
 
 export default function Status({ isConfirmedEmpty }) {
   return (
-    <StyledBlueBox>
+    <StyledBlueBox isConfirmed={isConfirmedEmpty}>
       {isConfirmedEmpty ? "CONFIRMED" : "INVESTIGATING"}
     </StyledBlueBox>
   );
