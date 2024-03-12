@@ -15,6 +15,14 @@ export default function ReportPage() {
     mutate: mutateEmptyFlats,
   } = useSWR("/api/emptyFlats");
 
+  const {
+    data: userData,
+    isLoading: userLoading,
+    error: userError,
+  } = useSWR(session ? `/api/users/${session.user?.googleId}` : null);
+
+  console.log(userData);
+
   async function handleAddFlat(event) {
     console.log("Button clicked");
     event.preventDefault();
@@ -33,6 +41,8 @@ export default function ReportPage() {
       namesOnDoorbell: namesOnDoorbell,
       report: report,
       isConfirmedEmpty: false,
+      reporterName: userData.name,
+      reporterMail: userData.email,
     };
 
     const response = await fetch(`/api/emptyFlats`, {

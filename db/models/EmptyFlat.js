@@ -9,6 +9,8 @@ const emptyFlatSchema = new Schema({
   namesOnDoorbell: { type: String, required: true },
   report: { type: String, required: true },
   isConfirmedEmpty: { type: Boolean, required: true },
+  reporterName: { type: String, required: true },
+  reporterMail: { type: String, required: true },
 });
 
 const EmptyFlat =
