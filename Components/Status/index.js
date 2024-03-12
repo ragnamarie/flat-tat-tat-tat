@@ -1,22 +1,6 @@
 import styled from "styled-components";
 
-export const StyledStatus = styled.span`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  font-family: Helvetica;
-  font-weight: 700;
-  font-size: 14px;
-  padding: 10px;
-  background-color: white;
-  color: #2422d5;
-  max-height: 40px;
-  margin-bottom: 5px;
-  width: 200px;
-`;
-
-export const StyledConfirmed = styled.span`
+export const StyledBlueBox = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -34,11 +18,8 @@ export const StyledConfirmed = styled.span`
 
 export default function Status({ isConfirmedEmpty }) {
   return (
-    <div>
-      <StyledStatus>STATUS</StyledStatus>
-      <StyledConfirmed>
-        {isConfirmedEmpty ? "CONFIRMED" : "INVESTIGATING"}
-      </StyledConfirmed>
-    </div>
+    <StyledBlueBox>
+      {isConfirmedEmpty ? "CONFIRMED" : "INVESTIGATING"}
+    </StyledBlueBox>
   );
 }
