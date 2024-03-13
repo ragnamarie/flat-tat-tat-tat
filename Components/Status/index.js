@@ -41,3 +41,17 @@ export default function Status({ isConfirmedEmpty }) {
     );
   }
 }
+
+// TRYING DROP DOWN
+// export default function Status({ isConfirmedEmpty }) {
+//   if (isConfirmedEmpty === true) {
+//     return <StyledBlueBoxConfirmed>CONFIRMED</StyledBlueBoxConfirmed>;
+//   } else {
+//     return (
+//       <StyledBlueBoxInvestigating id="status" name="status">
+//         <option value="investigating">INVESTIGATING</option>
+//         <option value="confirmed">CONFIRMED</option>
+//       </StyledBlueBoxInvestigating>
+//     );
+//   }
+// }
