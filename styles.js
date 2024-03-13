@@ -26,6 +26,11 @@ body {
     min-height: 75%;
   }
 
+  footer {
+    display: flex;
+    justify-content: space-between;
+  }
+
   h1 {
     font-size: 54px;
   }

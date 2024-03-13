@@ -14,7 +14,7 @@ export default function TicketPage() {
     error: userError,
   } = useSWR(session ? `/api/users/${session.user?.googleId}` : null);
 
-  if (loadingEmptyFlatsData) {
+  if (loadingEmptyFlatsData || userLoading) {
     return <h1>LOADING...</h1>;
   }
 
@@ -28,11 +28,19 @@ export default function TicketPage() {
 
   if (status === "authenticated") {
     const userEmail = userData?.email;
+    const isAdmin = userData?.admin;
 
-    // Filter empty flats based on reporterMail
-    const userEmptyFlats = emptyFlatsData.filter(
-      (flat) => flat.reporterMail === userEmail
-    );
+    let userEmptyFlats;
+
+    if (isAdmin) {
+      // If user is admin, display all reported empty flats
+      userEmptyFlats = emptyFlatsData;
+    } else {
+      // Filter empty flats based on reporterMail for non-admin users
+      userEmptyFlats = emptyFlatsData.filter(
+        (flat) => flat.reporterMail === userEmail
+      );
+    }
 
     console.log(userEmptyFlats);
     return (

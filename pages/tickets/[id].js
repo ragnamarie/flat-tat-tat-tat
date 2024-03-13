@@ -29,8 +29,14 @@ export default function TicketDetailsPage() {
   console.log(data);
   console.log(userData?.email);
   console.log(data.reporterMail);
+  console.log(userData?.admin);
 
-  if (status === "authenticated" && userData?.email === data.reporterMail) {
+  const isAdmin = userData?.admin;
+
+  if (
+    (status === "authenticated" && userData?.email === data.reporterMail) ||
+    isAdmin === true
+  ) {
     return (
       <>
         <h1>{data.street}</h1>
