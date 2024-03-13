@@ -49,6 +49,7 @@ export default function TicketDetailsPage() {
           apartment={data.apartment}
           namesOnDoorbell={data.namesOnDoorbell}
           isConfirmedEmpty={data.isConfirmedEmpty}
+          report={data.report}
         />
       </>
     );

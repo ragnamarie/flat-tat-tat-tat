@@ -12,7 +12,7 @@ export const StyledBlueBoxConfirmed = styled.span`
   padding: 10px;
   background-color: #2422d5;
   color: #3bff13;
-  max-height: 40px;
+  min-height: 40px;
   width: 200px;
 `;
 
@@ -28,7 +28,7 @@ export const StyledBlueBoxInvestigating = styled.span`
   padding: 10px;
   background-color: #2422d5;
   color: #ff7373;
-  max-height: 40px;
+  min-height: 40px;
   width: 200px;
 `;
 
