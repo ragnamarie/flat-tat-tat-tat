@@ -9,7 +9,7 @@ export default function ConfirmationPage() {
         need any further information from you we will get in touch.
       </h2>
       <h3>
-        <Link href={"/tickets"}>← to Report Tickets</Link>
+        <Link href={"/tickets"}>← To Report Tickets</Link>
       </h3>
     </>
   );

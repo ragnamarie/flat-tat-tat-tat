@@ -8,6 +8,12 @@ export default function TicketPage() {
   const { data: emptyFlatsData, isLoading: loadingEmptyFlatsData } =
     useSWR("/api/emptyFlats");
 
+  const {
+    data: userData,
+    isLoading: userLoading,
+    error: userError,
+  } = useSWR(session ? `/api/users/${session.user?.googleId}` : null);
+
   if (loadingEmptyFlatsData) {
     return <h1>LOADING...</h1>;
   }
@@ -16,16 +22,26 @@ export default function TicketPage() {
     return;
   }
 
+  console.log(userData);
+  console.log(userData?.email);
   console.log(emptyFlatsData);
 
   if (status === "authenticated") {
+    const userEmail = userData?.email;
+
+    // Filter empty flats based on reporterMail
+    const userEmptyFlats = emptyFlatsData.filter(
+      (flat) => flat.reporterMail === userEmail
+    );
+
+    console.log(userEmptyFlats);
     return (
       <>
         <h1>REPORTED FLATS</h1>
         <h3>
           <Link href={"/"}>← Back to Homepage</Link>
         </h3>
-        <ReportedFlats emptyFlats={emptyFlatsData} />
+        <ReportedFlats emptyFlats={userEmptyFlats} />
       </>
     );
   }

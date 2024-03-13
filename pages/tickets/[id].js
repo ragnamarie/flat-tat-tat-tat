@@ -12,7 +12,7 @@ export default function TicketDetailsPage() {
   const { data, isLoading } = useSWR(`/api/emptyFlats/${id}`);
 
   if (isLoading) {
-    return <h1>Loading...</h1>;
+    return <h1>LOADING...</h1>;
   }
 
   if (!data) {
@@ -20,6 +20,7 @@ export default function TicketDetailsPage() {
   }
 
   console.log(data._id);
+  console.log(data);
 
   if (status === "authenticated") {
     return (

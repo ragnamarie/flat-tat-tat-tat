@@ -3,6 +3,12 @@ import useSWR from "swr";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
+import styled from "styled-components";
+
+export const Container = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
 
 export default function ReportPage() {
   const router = useRouter();
@@ -66,7 +72,10 @@ export default function ReportPage() {
       <>
         <h1>REPORT AN EMPTY FLAT</h1>
         <h3>
-          <Link href={"/"}>← Back to Homepage</Link>
+          <Container>
+            <Link href={"/"}>← Back to Homepage</Link>
+            <Link href={"/tickets"}>To Report Tickets →</Link>
+          </Container>
         </h3>
         <Form onAddFlat={handleAddFlat} />
       </>
