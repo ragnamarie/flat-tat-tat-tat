@@ -13,8 +13,8 @@ export default createGlobalStyle`
   }
 
 body {
-    font-family: Futura, sans-serif;
-    font-weight: 500;
+    font-family: Proxima Nova, sans-serif;
+    font-weight: 700;
     margin: 0;
     height: 100vh;
     width: 100vw;
@@ -24,6 +24,10 @@ body {
 
   main {
     min-height: 75%;
+  }
+
+  h1 {
+    font-size: 54px;
   }
   
   h2 {

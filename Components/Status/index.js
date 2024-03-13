@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledBlueBox = styled.span`
+export const StyledBlueBoxConfirmed = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,15 +11,33 @@ export const StyledBlueBox = styled.span`
   border: solid white;
   padding: 10px;
   background-color: #2422d5;
-  color: white;
+  color: #3bff13;
+  max-height: 40px;
+  width: 200px;
+`;
+
+export const StyledBlueBoxInvestigating = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-family: Helvetica;
+  font-weight: 700;
+  font-size: 14px;
+  border: solid white;
+  padding: 10px;
+  background-color: #2422d5;
+  color: #ff7373;
   max-height: 40px;
   width: 200px;
 `;
 
 export default function Status({ isConfirmedEmpty }) {
-  return (
-    <StyledBlueBox>
-      {isConfirmedEmpty ? "CONFIRMED" : "INVESTIGATING"}
-    </StyledBlueBox>
-  );
+  if (isConfirmedEmpty === true) {
+    return <StyledBlueBoxConfirmed>CONFIRMED</StyledBlueBoxConfirmed>;
+  } else {
+    return (
+      <StyledBlueBoxInvestigating>INVESTIGATING</StyledBlueBoxInvestigating>
+    );
+  }
 }
