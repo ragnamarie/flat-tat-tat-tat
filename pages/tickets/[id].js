@@ -9,6 +9,12 @@ export default function TicketDetailsPage() {
   const router = useRouter();
   const { id } = router.query;
 
+  const {
+    data: userData,
+    isLoading: userLoading,
+    error: userError,
+  } = useSWR(session ? `/api/users/${session.user?.googleId}` : null);
+
   const { data, isLoading } = useSWR(`/api/emptyFlats/${id}`);
 
   if (isLoading) {
@@ -21,8 +27,10 @@ export default function TicketDetailsPage() {
 
   console.log(data._id);
   console.log(data);
+  console.log(userData?.email);
+  console.log(data.reporterMail);
 
-  if (status === "authenticated") {
+  if (status === "authenticated" && userData?.email === data.reporterMail) {
     return (
       <>
         <h1>{data.street}</h1>
