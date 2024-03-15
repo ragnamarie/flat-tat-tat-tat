@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Status from "../Status";
+import StatusSelection from "../StatusSelection";
 
 export const StyledTicket = styled.span`
   display: inline-block;
@@ -72,6 +72,7 @@ export default function ReportedFlatsDetails({
   namesOnDoorbell,
   isConfirmedEmpty,
   report,
+  onStatusChange,
 }) {
   console.log(isConfirmedEmpty);
 
@@ -93,7 +94,10 @@ export default function ReportedFlatsDetails({
         <StyledTicket>
           <StyledStatusContainer>
             <StyledWhiteBox>STATUS</StyledWhiteBox>
-            <Status isConfirmedEmpty={isConfirmedEmpty} />
+            <StatusSelection
+              isConfirmedEmpty={isConfirmedEmpty}
+              onStatusChange={onStatusChange}
+            />
           </StyledStatusContainer>
           <StyledWhiteBox>REPORT</StyledWhiteBox>
           <StyledReportBox>{report}</StyledReportBox>

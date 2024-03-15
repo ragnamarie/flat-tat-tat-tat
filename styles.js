@@ -57,10 +57,9 @@ body {
     background-color: #2422D5; 
     color: #ff7373; 
     border: none; 
-    font-size: 16px;
+    font-size: 14px;
+    font-weight: 700;
   }
 
-  option {
-    text-decoration: none;
-  }
+
 `;
