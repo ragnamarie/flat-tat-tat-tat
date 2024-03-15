@@ -37,21 +37,12 @@ export default function Status({ isConfirmedEmpty }) {
     return <StyledBlueBoxConfirmed>CONFIRMED</StyledBlueBoxConfirmed>;
   } else {
     return (
-      <StyledBlueBoxInvestigating>INVESTIGATING</StyledBlueBoxInvestigating>
+      <StyledBlueBoxInvestigating>
+        <select>
+          <option value="investigating">INVESTIGATING</option>
+          <option value="confirmed">CONFIRMED</option>
+        </select>
+      </StyledBlueBoxInvestigating>
     );
   }
 }
-
-// TRYING DROP DOWN
-// export default function Status({ isConfirmedEmpty }) {
-//   if (isConfirmedEmpty === true) {
-//     return <StyledBlueBoxConfirmed>CONFIRMED</StyledBlueBoxConfirmed>;
-//   } else {
-//     return (
-//       <StyledBlueBoxInvestigating id="status" name="status">
-//         <option value="investigating">INVESTIGATING</option>
-//         <option value="confirmed">CONFIRMED</option>
-//       </StyledBlueBoxInvestigating>
-//     );
-//   }
-// }

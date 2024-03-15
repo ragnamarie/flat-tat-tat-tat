@@ -51,4 +51,16 @@ body {
   a {
     color: white;
   }
+
+  select {
+    appearance: none;
+    background-color: #2422D5; 
+    color: #ff7373; 
+    border: none; 
+    font-size: 16px;
+  }
+
+  option {
+    text-decoration: none;
+  }
 `;
