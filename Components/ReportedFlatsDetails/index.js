@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import StatusSelection from "../StatusSelection";
 import Status from "../Status";
 
 export const StyledTicket = styled.span`
@@ -15,6 +16,10 @@ export const StyledContainer = styled.div`
   gap: 20px;
 `;
 
+export const StyledStatusContainer = styled.div`
+  margin-bottom: 20px;
+`;
+
 export const StyledWhiteBox = styled.span`
   display: flex;
   align-items: center;
@@ -26,7 +31,7 @@ export const StyledWhiteBox = styled.span`
   padding: 10px;
   background-color: white;
   color: #2422d5;
-  max-height: 40px;
+  min-height: 40px;
   margin-bottom: 5px;
   min-width: 200px;
 `;
@@ -46,12 +51,30 @@ export const StyledBlueBox = styled.span`
   margin-bottom: 20px;
 `;
 
+export const StyledReportBox = styled.span`
+  display: flex;
+  position: relative;
+  font-family: Helvetica;
+  font-weight: 700;
+  font-size: 14px;
+  border: solid white;
+  padding: 10px;
+  background-color: #2422d5;
+  color: white;
+  min-height: 205px;
+  min-width: 200px;
+  margin-bottom: 20px;
+`;
+
 export default function ReportedFlatsDetails({
   street,
   zip,
   apartment,
   namesOnDoorbell,
   isConfirmedEmpty,
+  report,
+  onStatusChange,
+  isAdmin,
 }) {
   console.log(isConfirmedEmpty);
 
@@ -70,10 +93,21 @@ export default function ReportedFlatsDetails({
           <StyledWhiteBox>NAMES</StyledWhiteBox>
           <StyledBlueBox>{namesOnDoorbell}</StyledBlueBox>
         </StyledTicket>
-        <div>
-          <StyledWhiteBox>STATUS</StyledWhiteBox>
-          <Status isConfirmedEmpty={isConfirmedEmpty} />
-        </div>
+        <StyledTicket>
+          <StyledStatusContainer>
+            <StyledWhiteBox>STATUS</StyledWhiteBox>
+            {isAdmin ? (
+              <StatusSelection
+                isConfirmedEmpty={isConfirmedEmpty}
+                onStatusChange={onStatusChange}
+              />
+            ) : (
+              <Status />
+            )}
+          </StyledStatusContainer>
+          <StyledWhiteBox>REPORT</StyledWhiteBox>
+          <StyledReportBox>{report}</StyledReportBox>
+        </StyledTicket>
       </StyledContainer>
     </>
   );

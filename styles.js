@@ -26,6 +26,11 @@ body {
     min-height: 75%;
   }
 
+  footer {
+    display: flex;
+    justify-content: space-between;
+  }
+
   h1 {
     font-size: 54px;
   }
@@ -46,4 +51,15 @@ body {
   a {
     color: white;
   }
+
+  select {
+    appearance: none;
+    background-color: #2422D5; 
+    color: #ff7373; 
+    border: none; 
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+
 `;

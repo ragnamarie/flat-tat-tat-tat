@@ -5,7 +5,12 @@ export const HighlightedFlatsCount = styled.span`
 `;
 
 export default function Counter({ emptyFlats }) {
-  const emptyFlatsCount = emptyFlats.length;
+  const confirmedEmptyFlats = emptyFlats.filter(
+    (flat) => flat.isConfirmedEmpty
+  );
+
+  // Count the number of confirmed empty flats
+  const emptyFlatsCount = confirmedEmptyFlats.length;
 
   return (
     <>

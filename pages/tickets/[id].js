@@ -15,7 +15,7 @@ export default function TicketDetailsPage() {
     error: userError,
   } = useSWR(session ? `/api/users/${session.user?.googleId}` : null);
 
-  const { data, isLoading } = useSWR(`/api/emptyFlats/${id}`);
+  const { data, isLoading, mutate } = useSWR(`/api/emptyFlats/${id}`);
 
   if (isLoading) {
     return <h1>LOADING...</h1>;
@@ -29,8 +29,43 @@ export default function TicketDetailsPage() {
   console.log(data);
   console.log(userData?.email);
   console.log(data.reporterMail);
+  console.log(userData?.admin);
 
-  if (status === "authenticated" && userData?.email === data.reporterMail) {
+  const isAdmin = userData?.admin;
+
+  async function handleStatusChange() {
+    console.log("handleSlotRelease function is called");
+    // Assuming `id` is available here
+    const response = await fetch(`/api/emptyFlats/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ isConfirmedEmpty: true }), // Change the property value
+    });
+
+    if (response.ok) {
+      // Update the local data if the request is successful
+      mutate(
+        `/api/emptyFlats/${id}`,
+        { ...data, isConfirmedEmpty: true },
+        false
+      );
+    }
+  }
+
+  if (isLoading) {
+    return <h1>LOADING...</h1>;
+  }
+
+  if (!data) {
+    return <h1>Data not found</h1>; // Handle data not found case
+  }
+
+  if (
+    (status === "authenticated" && userData?.email === data.reporterMail) ||
+    isAdmin === true
+  ) {
     return (
       <>
         <h1>{data.street}</h1>
@@ -43,6 +78,9 @@ export default function TicketDetailsPage() {
           apartment={data.apartment}
           namesOnDoorbell={data.namesOnDoorbell}
           isConfirmedEmpty={data.isConfirmedEmpty}
+          report={data.report}
+          onStatusChange={handleStatusChange}
+          isAdmin={isAdmin}
         />
       </>
     );

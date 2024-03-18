@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Layout({ children }) {
   return (
     <>
@@ -7,6 +9,9 @@ export default function Layout({ children }) {
         <p>
           <small>flat-tat-tat-tat&copy;</small>
         </p>
+        <small>
+          <Link href="/tickets">Admin Login</Link>
+        </small>
       </footer>
     </>
   );
