@@ -80,6 +80,7 @@ export default function TicketDetailsPage() {
           isConfirmedEmpty={data.isConfirmedEmpty}
           report={data.report}
           onStatusChange={handleStatusChange}
+          isAdmin={isAdmin}
         />
       </>
     );

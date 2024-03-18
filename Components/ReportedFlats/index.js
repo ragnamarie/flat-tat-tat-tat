@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Link from "next/link";
-import Status from "../StatusSelection";
+import Status from "../Status";
 
 export const StyledList = styled.ul`
   display: grid;
